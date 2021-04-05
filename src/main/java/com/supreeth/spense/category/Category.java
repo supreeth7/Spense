@@ -1,8 +1,11 @@
 package com.supreeth.spense.category;
 
+import com.supreeth.spense.transactions.Transaction;
 import com.supreeth.spense.user.User;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "categories")
@@ -21,20 +24,20 @@ public class Category {
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Category() {
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy="category")
+    private List<Transaction> transactions = new ArrayList<>();
 
+    public Category() {
+    }
+
+    public Category(Integer id) {
+        this.id = id;
     }
 
     public Category(String title, String description, Integer userId) {
         this.title = title;
         this.description = description;
-        this.user = new User(userId, "", "", "", "");
-    }
-
-    public Category(Integer id, String title, String description) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
+        this.user = new User(userId);
     }
 
     public Integer getId() {

@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -22,6 +23,12 @@ public class CategoryController {
         return category_list;
     }
 
+    @GetMapping("{id}")
+    public Category get(HttpServletRequest request, @PathVariable Integer id) {
+        int user_id = (Integer) request.getAttribute("user_id");
+        return categoryService.getCategory(user_id, id);
+    }
+
     @PostMapping("/create")
     public ResponseEntity<Category> add(HttpServletRequest request, @RequestBody Map<String, Object> categoryMap) {
         int user_id = (Integer) request.getAttribute("user_id");
@@ -31,9 +38,23 @@ public class CategoryController {
         return new ResponseEntity<>(category, HttpStatus.CREATED);
     }
 
-    @GetMapping("{id}")
-    public Category get(HttpServletRequest request, @PathVariable Integer id) {
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Map<String, String>> update(HttpServletRequest request, @PathVariable Integer id, @RequestBody Map<String, Object> updateFields) {
         int user_id = (Integer) request.getAttribute("user_id");
-        return categoryService.getCategory(user_id, id);
+        String title = (String) updateFields.get("title");
+        String description = (String) updateFields.get("description");
+        Map<String, String> m = new HashMap<>();
+        if (categoryService.updateCategory(user_id, id, title, description) != null) {
+            m.put("message", "updated");
+        }
+        return new ResponseEntity<>(m, HttpStatus.OK);
     }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<Map<String, String>> delete(HttpServletRequest request, @PathVariable Integer id) {
+        int user_id = (Integer) request.getAttribute("user_id");
+        return categoryService.removeCategory(user_id, id);
+    }
+
+
 }

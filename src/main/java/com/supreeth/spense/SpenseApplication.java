@@ -19,6 +19,7 @@ public class SpenseApplication {
         AuthFilter authFilter = new AuthFilter();
         filterFilterRegistrationBean.setFilter(authFilter);
         filterFilterRegistrationBean.addUrlPatterns("/api/v1/categories/*");
+        filterFilterRegistrationBean.addUrlPatterns("/api/v1/transactions/*");
         return filterFilterRegistrationBean;
     }
 

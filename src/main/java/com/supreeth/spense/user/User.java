@@ -3,8 +3,8 @@ package com.supreeth.spense.user;
 import com.supreeth.spense.category.Category;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -17,7 +17,14 @@ public class User {
     private String email;
     private String password;
 
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy="user")
+    private List<Category> users = new ArrayList<>();
+
     public User() {
+    }
+
+    public User(Integer id) {
+        this.id = id;
     }
 
     public User(String firstName, String lastName, String email, String password) {
