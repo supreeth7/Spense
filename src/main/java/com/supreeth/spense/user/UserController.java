@@ -47,7 +47,7 @@ public class UserController {
     private Map<String, String> generateJWTToken(User user) {
         long timestamp = System.currentTimeMillis();
         String token = Jwts.builder().signWith(SignatureAlgorithm.HS256, Constants.SECRET_KEY).
-                setIssuedAt(new Date(timestamp)).setExpiration(new Date(timestamp + Constants.TOKEN_EXPIRY))
+                setIssuedAt(new Date(timestamp)).setExpiration(new Date(timestamp + Constants.EXPIRY))
                 .claim("user_id", user.getId())
                 .claim("email", user.getEmail())
                 .claim("first_name", user.getFirstName())
