@@ -12,6 +12,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/transactions")
+@CrossOrigin(allowedHeaders = "*", origins = "*")
 public class TransactionController {
     @Autowired
     private TransactionService transactionService;

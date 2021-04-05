@@ -12,6 +12,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/categories")
+@CrossOrigin(allowedHeaders = "*", origins = "*")
 public class CategoryController {
     @Autowired
     private CategoryService categoryService;
