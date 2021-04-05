@@ -17,11 +17,11 @@ public class TransactionController {
     @Autowired
     private TransactionService transactionService;
 
-    @GetMapping("/")
+    @GetMapping("")
     public List<Transaction> getAll(HttpServletRequest request) {
         int user_id = (Integer) request.getAttribute("user_id");
-        List<Transaction> transactions = transactionService.getAllTransactions(user_id);
-        return  transactions;
+        List<Transaction> transaction_list = transactionService.getAllTransactions(user_id);
+        return transaction_list;
     }
 
     @GetMapping("{id}")
@@ -57,6 +57,6 @@ public class TransactionController {
     @DeleteMapping("{id}")
     public ResponseEntity<Map<String, String>> delete(HttpServletRequest request, @PathVariable Integer id) {
         int user_id = (Integer) request.getAttribute("user_id");
-        return transactionService.removeTransaction(user_id,id);
+        return transactionService.removeTransaction(user_id, id);
     }
 }

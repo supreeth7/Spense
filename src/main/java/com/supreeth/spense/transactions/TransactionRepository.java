@@ -8,9 +8,9 @@ import java.util.List;
 @Repository
 public interface TransactionRepository extends JpaRepository<Transaction, Integer> {
 
-    List<Transaction> findByUserIdAndCategoryId(Integer user_id, Integer cat_id);
-
     List<Transaction> findByUserId(Integer user_id);
+
+    List<Transaction> findByUserIdAndCategoryId(Integer user_id, Integer cat_id);
 
     Transaction findByUserIdAndId(Integer user_id, Integer id);
 }

@@ -4,9 +4,7 @@ import com.supreeth.spense.category.Category;
 import com.supreeth.spense.user.User;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "transactions")
@@ -41,13 +39,6 @@ public class Transaction {
         this.category = new Category(cat_id);
     }
 
-    public Transaction(Double amount, String note, Date transactionDate, Integer user_id) {
-        this.amount = amount;
-        this.note = note;
-        this.transactionDate = transactionDate;
-        this.user = new User(user_id);
-    }
-
     public Integer getId() {
         return id;
     }
@@ -78,5 +69,15 @@ public class Transaction {
 
     public void setTransactionDate(Date transactionDate) {
         this.transactionDate = transactionDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "id=" + id +
+                ", amount=" + amount +
+                ", note='" + note + '\'' +
+                ", transactionDate=" + transactionDate +
+                '}';
     }
 }
