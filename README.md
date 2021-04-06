@@ -1,6 +1,8 @@
 <h1 align="center">
- <img src="https://www.dropbox.com/s/smrhpyo34uzby64/default-monochrome-black.svg?dl=0?raw=true" alt="Spense">
+ <img src="https://www.dropbox.com/s/az1urfq4bs9pkvz/default-monochrome-black.png?raw=true" alt="Spense">
 </h1>
+
+![alt text](https://www.dropbox.com/s/smrhpyo34uzby64/default-monochrome-black.svg?raw=true)
 
 <p align="center">Spense is an expense tracking REST API with a JWT based authentication system that performs use-case targetted functionalities to manipulate data stored in an AWS RDS MySQL database</p>
 
@@ -128,7 +130,7 @@
 
 #### Retreive transactions belonging to a specific category
 
-![alt text](https://www.dropbox.com/s/lyadzz68sx56j03/getTransactionsByCategory.gif??raw=true)
+![alt text](https://www.dropbox.com/s/lyadzz68sx56j03/getTransactionsByCategory.gif?raw=true)
 
 <br>
 
